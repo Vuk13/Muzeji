@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +54,14 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
                 .add(R.id.map_view, mapFragment).commit();
         mapFragment.getMapAsync(this);
 
+        ImageView back = (ImageView)findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         muzej_id = (Integer)getIntent().getIntExtra("MUZEJ_ID_KEY",-1);
 
 
@@ -90,25 +100,43 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
         String email = (String) getIntent().getStringExtra("MUZEJ_EMAIL_KEY");
         String latituda=(String)getIntent().getStringExtra("MUZEJ_LATITUDA_KEY");
         String longituda=(String)getIntent().getStringExtra("MUZEJ_LONGITUDA_KEY");
+        String cijena = (String)getIntent().getStringExtra("MUZEJ_CIJENA_KEY");
+        double cijenaBr = Double.parseDouble(cijena);
+        cijenaBr=cijenaBr/2;
+        String cijena2 = Double.toString(cijenaBr);
         String ikonica = (String)getIntent().getStringExtra("MUZEJ_ICON_KEY");
         String ikonica2 = ikonica.replaceAll("\\\\", "");
 
         TextView naziv_tv = (TextView)findViewById(R.id.nazivTV);
         TextView email_tv = (TextView)findViewById(R.id.email_TV);
         TextView telefon_tv = (TextView)findViewById(R.id.telefonTV);
+        TextView cijena_tv = (TextView)findViewById(R.id.cijena_odrasli);
+        TextView cijena2_tv = (TextView)findViewById(R.id.cijena_mladi);
         ImageView icon = (ImageView)findViewById(R.id.detailIconImage);
         Log.d(TAG, "onBindViewHolder: "+ikonica2);
         Picasso.get().load(ikonica2).fit().into(icon);
 
 
 
-                naziv_tv.setText(naziv);
+        naziv_tv.setText(naziv);
         email_tv.setText(email);
         telefon_tv.setText(telefon);
-
+        cijena_tv.setText(cijena+"€");
+        cijena2_tv.setText(cijena2 +"€");
         setLL(latituda,longituda);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void setLL(String latS, String lonS)
     {
         this.lat = Double.parseDouble(latS);

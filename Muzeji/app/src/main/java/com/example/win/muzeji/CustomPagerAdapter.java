@@ -53,7 +53,13 @@ public class CustomPagerAdapter extends PagerAdapter {
 
                  try {
                      if(position>=3){
-                         position = 1;
+                         if(position%3==0){
+                             position=0;
+
+                         }else {
+                             position = position % 3;
+                         }
+
                      }
                      foto = photo.get(position);
                      Log.d(TAG, "instantiateItem: starts");
