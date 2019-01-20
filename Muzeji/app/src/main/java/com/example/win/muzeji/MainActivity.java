@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        setTitle(Html.fromHtml("<p style=\"color:white;font-size:22px\"><strong>Narodni muzej Crne Gore</strong></p>"));
 
         pDialog = new ProgressDialog(MainActivity.this);
         pDialog.setMessage("Loading Data.. Please wait...");

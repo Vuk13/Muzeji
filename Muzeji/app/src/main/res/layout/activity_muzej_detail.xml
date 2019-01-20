@@ -256,14 +256,19 @@
             app:layout_constraintTop_toBottomOf="@+id/mailIcon2"></com.google.android.gms.maps.MapView>
 
         <TextView
-            android:paddingLeft="20dp"
-            android:layout_marginTop="0dp"
+            android:id="@+id/navTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/nav"
+            android:drawableRight="@drawable/nav_img"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:text="Neki tekst vezan za navigaciju"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="Neki tekst vezan za navigaciju"
-            app:layout_constraintTop_toBottomOf="@id/map_view"/>
+            app:layout_constraintTop_toBottomOf="@id/map_view" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -284,6 +289,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_back" />
+
+        <TextView
+            android:id="@+id/opisLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/textlines"
+            android:text="Opis"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navTV" />
+
+        <TextView
+            android:id="@+id/opisTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/opisLabel" />
 
 
         <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->

@@ -39,7 +39,12 @@
             android:value="AIzaSyBLEm7rthP1M-tjYOzDABQ3_ReLkY4SlvQ" />
 
         <activity
-            android:name=".MapsActivity"></activity>
+            android:name=".MapsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.win.muzeji.MuzejDetailActivity" />
+
+        </activity>
     </application>
 
 </manifest>

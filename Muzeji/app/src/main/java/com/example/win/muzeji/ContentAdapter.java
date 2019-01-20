@@ -55,6 +55,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.CustomVi
         intent.putExtra("MUZEJ_ICON_KEY",iconURL);
         intent.putExtra("MUZEJ_LATITUDA_KEY",latituda);
         intent.putExtra("MUZEJ_LONGITUDA_KEY",longituda);
+        intent.putExtra("MUZEJ_OPIS_KEY",muzej.getOpis());
         context.startActivity(intent);
     }
 

@@ -37,7 +37,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="95" />
+                                                <entry key="scalingPercent" value="56" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -47,9 +47,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="ic_back_bg" />
-                                      <entry key="foregroundImage" value="C:\Users\Win\Desktop\projekat muzeji\ikonice\back.png" />
-                                      <entry key="foregroundLayerName" value="ic_back" />
+                                      <entry key="backgroundLayerName" value="ic_nav_bg" />
+                                      <entry key="foregroundImage" value="C:\Users\Win\Desktop\projekat muzeji\ikonice\F64CA698-B43E-4B10-96E7-119B286602E2.png" />
+                                      <entry key="foregroundLayerName" value="ic_nav" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -100,6 +100,7 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
         String email = (String) getIntent().getStringExtra("MUZEJ_EMAIL_KEY");
         String latituda=(String)getIntent().getStringExtra("MUZEJ_LATITUDA_KEY");
         String longituda=(String)getIntent().getStringExtra("MUZEJ_LONGITUDA_KEY");
+        String opis = (String)getIntent().getStringExtra("MUZEJ_OPIS_KEY");
         String cijena = (String)getIntent().getStringExtra("MUZEJ_CIJENA_KEY");
         double cijenaBr = Double.parseDouble(cijena);
         cijenaBr=cijenaBr/2;
@@ -112,6 +113,8 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
         TextView telefon_tv = (TextView)findViewById(R.id.telefonTV);
         TextView cijena_tv = (TextView)findViewById(R.id.cijena_odrasli);
         TextView cijena2_tv = (TextView)findViewById(R.id.cijena_mladi);
+        TextView navTV = (TextView)findViewById(R.id.navTV);
+        TextView opisTV = (TextView)findViewById(R.id.opisTV);
         ImageView icon = (ImageView)findViewById(R.id.detailIconImage);
         Log.d(TAG, "onBindViewHolder: "+ikonica2);
         Picasso.get().load(ikonica2).fit().into(icon);
@@ -123,7 +126,21 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
         telefon_tv.setText(telefon);
         cijena_tv.setText(cijena+"€");
         cijena2_tv.setText(cijena2 +"€");
+        opisTV.setText(opis);
+        navTV.setText(naziv);
         setLL(latituda,longituda);
+        navTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,MapsActivity.class);
+                intent.putExtra("LATITUDA_KEY",getLat());
+                intent.putExtra("LONGITUDA_KEY",getLng());
+                intent.putExtra("MUZEJ_NAZIV_KEY",
+                        (String) getIntent().getStringExtra("MUZEJ_NAZIV_KEY"));
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -160,16 +177,17 @@ public class MuzejDetailActivity extends AppCompatActivity implements OnMapReady
         gMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         gMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
 
-        gMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        GoogleMap.OnMapClickListener onMapClickListener=new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
 
-               Intent intent = new Intent(context,MapsActivity.class);
-               intent.putExtra("LATITUDA_KEY",getLat());
-               intent.putExtra("LONGITUDA_KEY",getLng());
-               context.startActivity(intent);
+                Intent intent = new Intent(context,MapsActivity.class);
+                intent.putExtra("LATITUDA_KEY",getLat());
+                intent.putExtra("LONGITUDA_KEY",getLng());
+                context.startActivity(intent);
             }
-        });
+        };
+    //        gMap.setOnMapClickListener(onMapClickListener);
     }
 
 
