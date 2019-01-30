@@ -103,6 +103,7 @@ GoogleApiClient.OnConnectionFailedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         setContentView(R.layout.activity_maps);
